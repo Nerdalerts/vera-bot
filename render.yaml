@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: vera-bot
+    runtime: docker
+    plan: starter          # always-on; the free plan sleeps and would fail /v1/healthz
+    healthCheckPath: /v1/healthz
+    autoDeploy: false
+    envVars:
+      - key: LLM_PROVIDER
+        value: anthropic
+      - key: LLM_MODEL
+        value: claude-sonnet-5
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: TEAM_NAME
+        sync: false
+      - key: TEAM_MEMBERS
+        sync: false
+      - key: CONTACT_EMAIL
+        sync: false
